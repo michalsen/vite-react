@@ -1,0 +1,104 @@
+{
+  "composer_quiz_questions": [
+    {
+      "question": "What is Composer primarily used for in Drupal 10?",
+      "options": [
+        "Managing configurations",
+        "Managing PHP dependencies",
+        "Managing database migrations",
+        "Managing user permissions"
+      ],
+      "correct_answer": "Managing PHP dependencies"
+    },
+    {
+      "question": "What command is used to install a new package via Composer?",
+      "options": [
+        "composer install <package-name>",
+        "composer require <package-name>",
+        "composer add <package-name>",
+        "composer get <package-name>"
+      ],
+      "correct_answer": "composer require <package-name>"
+    },
+    {
+      "question": "Which file does Composer use to manage dependencies?",
+      "options": [
+        "composer.lock",
+        "composer.json",
+        "require.json",
+        "dependencies.json"
+      ],
+      "correct_answer": "composer.json"
+    },
+    {
+      "question": "What does the command `composer update` do?",
+      "options": [
+        "Installs new dependencies only",
+        "Updates the composer.json file",
+        "Updates all the dependencies to their latest versions",
+        "Removes unused dependencies"
+      ],
+      "correct_answer": "Updates all the dependencies to their latest versions"
+    },
+    {
+      "question": "How do you check for outdated packages in a Drupal 10 project?",
+      "options": [
+        "composer outdate",
+        "composer check",
+        "composer outdated",
+        "composer list"
+      ],
+      "correct_answer": "composer outdated"
+    },
+    {
+      "question": "Which command is used to remove a package with Composer?",
+      "options": [
+        "composer uninstall <package-name>",
+        "composer delete <package-name>",
+        "composer remove <package-name>",
+        "composer forget <package-name>"
+      ],
+      "correct_answer": "composer remove <package-name>"
+    },
+    {
+      "question": "What is `composer install` used for?",
+      "options": [
+        "To install Composer itself",
+        "To install PHP",
+        "To install dependencies listed in composer.json",
+        "To create a new Composer project"
+      ],
+      "correct_answer": "To install dependencies listed in composer.json"
+    },
+    {
+      "question": "Which command should be run to ensure that the `composer.lock` file is in sync with the `composer.json`?",
+      "options": [
+        "composer validate",
+        "composer install",
+        "composer update",
+        "composer sync"
+      ],
+      "correct_answer": "composer install"
+    },
+    {
+      "question": "What purpose does the `minimum-stability` key serve in composer.json?",
+      "options": [
+        "It sets the PHP version required",
+        "It defines the stability of the packages allowed",
+        "It sets the minimum version of Composer",
+        "It limits the packages based on their licenses"
+      ],
+      "correct_answer": "It defines the stability of the packages allowed"
+    },
+    {
+      "question": "How do you specify a version constraint for a package in composer.json?",
+      "options": [
+        "Using semantic versioning",
+        "Using alphanumeric codes",
+        "Using binary numbers",
+        "Using hex values"
+      ],
+      "correct_answer": "Using semantic versioning"
+    }
+  ]
+}
