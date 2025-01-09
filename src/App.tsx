@@ -1,4 +1,3 @@
-// Import necessary libraries and JSON data
 import React, { useEffect, useState, FormEvent } from 'react';
 import githubQuestionsData from './data/github_questions.json';
 import drupalQuestionsData from './data/drupal_questions.json';
@@ -13,69 +12,114 @@ interface Question {
 }
 
 const App: React.FC = () => {
-  // Define the questions state with an explicit type of Question array
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState('');
   const [incorrectAnswers, setIncorrectAnswers] = useState<{ question: string; userAnswer: string; correctAnswer: string }[]>([]);
+  const [quizFinished, setQuizFinished] = useState(false);
 
-  // Function to shuffle questions
+  // State to manage ToDo items
+  const [todoItems, setTodoItems] = useState<string[]>(['Change question json to yml', 'Combine into 1 yml', 'Randomize questions', 'Weight topic button to quiz on', 'Randomize number of questions', 'Edit questions']);
+  const [newTodo, setNewTodo] = useState<string>(''); // New state for text input
+
   const shuffleArray = (array: Question[]) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+      [array[i], array[j]] = [array[j], array[i]];
     }
   };
 
-  // Load questions on component mount
   useEffect(() => {
     const combinedQuestions = [
       ...githubQuestionsData.git_questions,
       ...drupalQuestionsData.drupal_questions,
-      ...composerQuestionsData.composer_quiz_questions, // Ensure you are using the correct property name
-      ...developmentQuestionsData.development_questions // Check this property name
+      ...composerQuestionsData.composer_quiz_questions,
+      ...developmentQuestionsData.development_questions,
     ];
-
-    // Shuffle the combined questions
     shuffleArray(combinedQuestions);
-    // Select the first 10 questions
     const selectedQuestions = combinedQuestions.slice(0, 10);
     setQuestions(selectedQuestions);
   }, []);
 
-  // Handle form submission
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const currentQuestion = questions[currentQuestionIndex];
 
-    // Check if the selected answer is correct
     if (selectedOption !== currentQuestion.correct_answer) {
       setIncorrectAnswers((prev) => [
         ...prev,
         { question: currentQuestion.question, userAnswer: selectedOption, correctAnswer: currentQuestion.correct_answer }
-      ]); // Store incorrect answers
+      ]);
     }
 
-    // Move to the next question
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      setCurrentQuestionIndex(0); // Reset to the first question for review
+      setQuizFinished(true);
     }
 
-    // Reset selected option
     setSelectedOption('');
   };
 
-  // Show loading message if questions are not yet loaded
   if (questions.length === 0) {
     return <div>Loading questions...</div>;
   }
 
+  if (quizFinished) {
+    return (
+      <div className="container">
+        <h1>Quiz Finished</h1>
+        {incorrectAnswers.length > 0 ? (
+          <div>
+            <h2>Incorrect Answers</h2>
+            <ul>
+              {incorrectAnswers.map((item, index) => (
+                <li key={index}>
+                  <p><strong>Question:</strong> {item.question}</p>
+                  <p><strong>Your Answer:</strong> <span style={{ color: 'red' }}>{item.userAnswer}</span></p>
+                  <p><strong>Correct Answer:</strong> <span style={{ color: 'green' }}>{item.correctAnswer}</span></p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <h2>Congratulations! You got all answers correct!</h2>
+        )}
+      </div>
+    );
+  }
+
   const currentQuestion = questions[currentQuestionIndex];
+
+  // Function to handle adding a new ToDo item
+  const handleAddTodo = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (newTodo.trim() !== '') {
+      setTodoItems((prev) => [...prev, newTodo.trim()]);
+      setNewTodo(''); // Clear the input after adding
+    }
+  };
 
   return (
     <div className="container">
+      <div className="todo-list">
+        <h2>To-Do List</h2>
+        <ul>
+          {todoItems.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+        <form onSubmit={handleAddTodo}>
+          {/* <input
+            type="text"
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
+            placeholder="Add new item"
+          />
+          <button type="submit">Add</button> */}
+        </form>
+      </div>
+
       <h1>Quiz</h1>
       <form onSubmit={handleSubmit}>
         <h2>{currentQuestion.question}</h2>
@@ -94,22 +138,6 @@ const App: React.FC = () => {
         ))}
         <button type="submit">Submit</button>
       </form>
-
-      {/* Review Incorrect Answers After Completing the Quiz */}
-      {currentQuestionIndex === questions.length - 1 && incorrectAnswers.length > 0 && (
-        <div>
-          <h2>Incorrect Answers</h2>
-          <ul>
-            {incorrectAnswers.map((item, index) => (
-              <li key={index}>
-                <p><strong>Question:</strong> {item.question}</p>
-                <p><strong>Your Answer:</strong> <span style={{ color: 'red' }}>{item.userAnswer}</span></p>
-                <p><strong>Correct Answer:</strong> <span style={{ color: 'green' }}>{item.correctAnswer}</span></p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   );
 };
