@@ -12,22 +12,23 @@ interface Question {
 }
 
 const App: React.FC = () => {
-  // Define the questions state with an explicit type of Question array
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState('');
   const [incorrectAnswers, setIncorrectAnswers] = useState<{ question: string; userAnswer: string; correctAnswer: string }[]>([]);
-  const [quizFinished, setQuizFinished] = useState(false); // New state to track if the quiz is finished
+  const [quizFinished, setQuizFinished] = useState(false);
 
-  // Function to shuffle questions
+  // State to manage ToDo items
+  const [todoItems, setTodoItems] = useState<string[]>(['Change question json to yml', 'Combine into 1 yml', 'Randomize questions', 'Weight topic button to quiz on', 'Randomize number of questions', 'Edit questions']);
+  const [newTodo, setNewTodo] = useState<string>(''); // New state for text input
+
   const shuffleArray = (array: Question[]) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+      [array[i], array[j]] = [array[j], array[i]];
     }
   };
 
-  // Load questions on component mount
   useEffect(() => {
     const combinedQuestions = [
       ...githubQuestionsData.git_questions,
@@ -40,12 +41,10 @@ const App: React.FC = () => {
     setQuestions(selectedQuestions);
   }, []);
 
-  // Handle form submission
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const currentQuestion = questions[currentQuestionIndex];
 
-    // Check if the selected answer is correct
     if (selectedOption !== currentQuestion.correct_answer) {
       setIncorrectAnswers((prev) => [
         ...prev,
@@ -53,24 +52,19 @@ const App: React.FC = () => {
       ]);
     }
 
-    // Move to the next question or finish the quiz
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      // Set quiz finished when the last question is answered
       setQuizFinished(true);
     }
 
-    // Reset selected option
     setSelectedOption('');
   };
 
-  // Show loading message if questions are not yet loaded
   if (questions.length === 0) {
     return <div>Loading questions...</div>;
   }
 
-  // If the quiz is finished, render results
   if (quizFinished) {
     return (
       <div className="container">
@@ -91,17 +85,42 @@ const App: React.FC = () => {
         ) : (
           <h2>Congratulations! You got all answers correct!</h2>
         )}
-        {/* Optionally add a button to restart the quiz */}
       </div>
     );
   }
 
   const currentQuestion = questions[currentQuestionIndex];
 
+  // Function to handle adding a new ToDo item
+  const handleAddTodo = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (newTodo.trim() !== '') {
+      setTodoItems((prev) => [...prev, newTodo.trim()]);
+      setNewTodo(''); // Clear the input after adding
+    }
+  };
+
   return (
     <div className="container">
-      <h1>Quiz</h1>
+      <div className="todo-list">
+        <h2>To-Do List</h2>
+        <ul>
+          {todoItems.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+        <form onSubmit={handleAddTodo}>
+          {/* <input
+            type="text"
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
+            placeholder="Add new item"
+          />
+          <button type="submit">Add</button> */}
+        </form>
+      </div>
 
+      <h1>Quiz</h1>
       <form onSubmit={handleSubmit}>
         <h2>{currentQuestion.question}</h2>
         {currentQuestion.options.map((option, index) => (
@@ -119,7 +138,6 @@ const App: React.FC = () => {
         ))}
         <button type="submit">Submit</button>
       </form>
-
     </div>
   );
 };
