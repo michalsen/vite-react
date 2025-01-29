@@ -41,7 +41,7 @@ body {
 .container {
   text-align: center;
   /* Centered text in the container */
-  max-width: 600px;
+  max-width: 800px;
   /* Limit the width for better readability */
   width: 100%;
   /* Full width on small devices */
@@ -173,5 +173,3 @@ button:focus-visible {
     padding: 5px 0;
     /* Add vertical padding for spacing between items */
   }
-
-

@@ -2,6 +2,7 @@
   "composer_quiz_questions": [
     {
       "question": "What is Composer primarily used for in Drupal 10?",
+      "type": "Composer",
       "options": [
         "Managing configurations",
         "Managing PHP dependencies",
@@ -12,6 +13,7 @@
     },
     {
       "question": "What command is used to install a new package via Composer?",
+      "type": "Composer",
       "options": [
         "composer install <package-name>",
         "composer require <package-name>",
@@ -22,6 +24,7 @@
     },
     {
       "question": "Which file does Composer use to manage dependencies?",
+      "type": "Composer",
       "options": [
         "composer.lock",
         "composer.json",
@@ -32,6 +35,7 @@
     },
     {
       "question": "What does the command `composer update` do?",
+      "type": "Composer",
       "options": [
         "Installs new dependencies only",
         "Updates the composer.json file",
@@ -42,6 +46,7 @@
     },
     {
       "question": "How do you check for outdated packages in a Drupal 10 project?",
+      "type": "Composer",
       "options": [
         "composer outdate",
         "composer check",
@@ -52,6 +57,7 @@
     },
     {
       "question": "Which command is used to remove a package with Composer?",
+      "type": "Composer",
       "options": [
         "composer uninstall <package-name>",
         "composer delete <package-name>",
@@ -62,6 +68,7 @@
     },
     {
       "question": "What is `composer install` used for?",
+      "type": "Composer",
       "options": [
         "To install Composer itself",
         "To install PHP",
@@ -72,6 +79,7 @@
     },
     {
       "question": "Which command should be run to ensure that the `composer.lock` file is in sync with the `composer.json`?",
+      "type": "Composer",
       "options": [
         "composer validate",
         "composer install",
@@ -82,6 +90,7 @@
     },
     {
       "question": "What purpose does the `minimum-stability` key serve in composer.json?",
+      "type": "Composer",
       "options": [
         "It sets the PHP version required",
         "It defines the stability of the packages allowed",
@@ -92,6 +101,7 @@
     },
     {
       "question": "How do you specify a version constraint for a package in composer.json?",
+      "type": "Composer",
       "options": [
         "Using semantic versioning",
         "Using alphanumeric codes",

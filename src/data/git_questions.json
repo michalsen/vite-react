@@ -2,6 +2,7 @@
   "git_questions": [
     {
       "question": "What command is used to create a new Git repository?",
+      "type": "Git",
       "options": [
         "git init",
         "git create",
@@ -12,6 +13,7 @@
     },
     {
       "question": "How do you stage changes for commit in Git?",
+      "type": "Git",
       "options": [
         "git add .",
         "git stage .",
@@ -22,6 +24,7 @@
     },
     {
       "question": "What command would you use to view the commit history?",
+      "type": "Git",
       "options": [
         "git history",
         "git log",
@@ -32,6 +35,7 @@
     },
     {
       "question": "What command will you use to clone a repository?",
+      "type": "Git",
       "options": [
         "git fetch",
         "git clone",
@@ -42,6 +46,7 @@
     },
     {
       "question": "Which command is used to remove a file from the staging area?",
+      "type": "Git",
       "options": [
         "git remove <file>",
         "git unstage <file>",
@@ -52,6 +57,7 @@
     },
     {
       "question": "How would you create a new branch in Git?",
+      "type": "Git",
       "options": [
         "git branch <branch-name>",
         "git create <branch-name>",
@@ -62,6 +68,7 @@
     },
     {
       "question": "What does 'git merge' do?",
+      "type": "Git",
       "options": [
         "Combines changes from one branch into another",
         "Creates a new branch",
@@ -72,6 +79,7 @@
     },
     {
       "question": "How can you view all branches in your repository?",
+      "type": "Git",
       "options": [
         "git branches",
         "git branch -a",
@@ -82,6 +90,7 @@
     },
     {
       "question": "Which command is used to push your changes to a remote repository?",
+      "type": "Git",
       "options": [
         "git upload",
         "git commit",
@@ -92,6 +101,7 @@
     },
     {
       "question": "What is a remote in Git?",
+      "type": "Git",
       "options": [
         "A local repository",
         "A backup of your repository",
