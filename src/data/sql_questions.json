@@ -1,0 +1,114 @@
+{
+  "mysql_quiz_questions": [
+    {
+      "question": "What does SQL stand for?",
+      "type": "SQL",
+      "options": [
+        "Structured Query Language",
+        "Sequential Query Language",
+        "Simple Query Language",
+        "Server Query Language"
+      ],
+      "correct_answer": "Structured Query Language"
+    },
+    {
+      "question": "Which of the following is a valid MySQL data type?",
+      "type": "SQL",
+      "options": [
+        "Integer",
+        "Float",
+        "Decimal",
+        "All of the above"
+      ],
+      "correct_answer": "All of the above"
+    },
+    {
+      "question": "What command is used to create a new database in MySQL?",
+      "type": "SQL",
+      "options": [
+        "CREATE DATABASE",
+        "NEW DATABASE",
+        "MAKE DATABASE",
+        "ADD DATABASE"
+      ],
+      "correct_answer": "CREATE DATABASE"
+    },
+    {
+      "question": "How can you view all databases in a MySQL server?",
+      "type": "SQL",
+      "options": [
+        "SHOW ALL DATABASES;",
+        "SHOW DATABASES;",
+        "VIEW DATABASES;",
+        "LIST DATABASES;"
+      ],
+      "correct_answer": "SHOW DATABASES;"
+    },
+    {
+      "question": "What type of JOIN returns all records from the left table and the matched records from the right table?",
+      "type": "SQL",
+      "options": [
+        "INNER JOIN",
+        "LEFT JOIN",
+        "RIGHT JOIN",
+        "FULL JOIN"
+      ],
+      "correct_answer": "LEFT JOIN"
+    },
+    {
+      "question": "What does the COUNT() function in SQL do?",
+      "type": "SQL",
+      "options": [
+        "Returns the sum of a numeric column",
+        "Counts the number of rows in a set",
+        "Returns the average value of a numeric column",
+        "Counts the number of unique values in a column"
+      ],
+      "correct_answer": "Counts the number of rows in a set"
+    },
+    {
+      "question": "Which command is used to add a new column to an existing table?",
+      "type": "SQL",
+      "options": [
+        "ALTER TABLE",
+        "ADD COLUMN TO TABLE",
+        "UPDATE TABLE",
+        "INSERT COLUMN IN TABLE"
+      ],
+      "correct_answer": "ALTER TABLE"
+    },
+    {
+      "question": "What function is used to retrieve the minimum value from a column?",
+      "type": "SQL",
+      "options": [
+        "MIN()",
+        "LOW()",
+        "LEAST()",
+        "SMALLEST()"
+      ],
+      "correct_answer": "MIN()"
+    },
+    {
+      "question": "Which of the following statements is correct for a primary key?",
+      "type": "SQL",
+      "options": [
+        "It can be NULL.",
+        "It must be unique.",
+        "It can contain duplicate values.",
+        "There can be multiple primary keys in a table."
+      ],
+      "correct_answer": "It must be unique."
+    },
+    {
+      "question": "What is the default port number for MySQL?",
+      "type": "SQL",
+      "options": [
+        "3306",
+        "5432",
+        "1521",
+        "8080"
+      ],
+      "correct_answer": "3306"
+    }
+  ]
+}

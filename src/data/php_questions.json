@@ -2,6 +2,7 @@
   "development_questions": [
     {
       "question": "What is the primary file needed to define a Drupal module?",
+      "type": "PHP",
       "options": [
         "module.info.yml",
         "module.module",
@@ -12,6 +13,7 @@
     },
     {
       "question": "Which hook is typically implemented to alter forms in a Drupal module?",
+      "type": "PHP",
       "options": [
         "hook_form_alter()",
         "hook_menu()",
@@ -22,6 +24,7 @@
     },
     {
       "question": "What is the purpose of the .module file in a Drupal module?",
+      "type": "PHP",
       "options": [
         "Defines the module's routes",
         "Contains PHP code for implementing hooks",
@@ -32,6 +35,7 @@
     },
     {
       "question": "How can you clear the cache after making changes to a module?",
+      "type": "PHP",
       "options": [
         "drush cc all",
         "drush cache:clear all",
@@ -42,6 +46,7 @@
     },
     {
       "question": "What file is used to define services in a Drupal module?",
+      "type": "PHP",
       "options": [
         "services.yml",
         "module.services.yml",
@@ -52,6 +57,7 @@
     },
     {
       "question": "What command will enable a module using Drush?",
+      "type": "PHP",
       "options": [
         "drush activate <module-name>",
         "drush en <module-name>",
@@ -62,6 +68,7 @@
     },
     {
       "question": "Which of the following is a common way to define routes in a Drupal module?",
+      "type": "PHP",
       "options": [
         "hook_menu()",
         "module.routing.yml",
@@ -72,6 +79,7 @@
     },
     {
       "question": "What is `hook_install()` used for?",
+      "type": "PHP",
       "options": [
         "To define a new content type",
         "To run code when the module is installed",
@@ -82,6 +90,7 @@
     },
     {
       "question": "How do you create a custom block in Drupal 10?",
+      "type": "PHP",
       "options": [
         "Using the Block API",
         "Creating a custom content type",
@@ -92,6 +101,7 @@
     },
     {
       "question": "What is the best practice to manage configuration in Drupal?",
+      "type": "PHP",
       "options": [
         "Hardcoding values in the module",
         "Using the Configuration API",

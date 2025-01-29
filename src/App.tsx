@@ -1,12 +1,15 @@
 import React, { useEffect, useState, FormEvent } from 'react';
-import githubQuestionsData from './data/github_questions.json';
+import gitQuestionsData from './data/git_questions.json';
 import drupalQuestionsData from './data/drupal_questions.json';
 import composerQuestionsData from './data/composer_questions.json';
-import developmentQuestionsData from './data/development_questions.json';
+import phpQuestionsData from './data/php_questions.json';
+import sqlQuestionsData from './data/sql_questions.json';
+import cisspd1QuestionsData from './data/cisspd1_questions.json';
 
 // Define the structure of a quiz question
 interface Question {
   question: string;
+  type: string;
   options: string[];
   correct_answer: string;
 }
@@ -17,10 +20,7 @@ const App: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState('');
   const [incorrectAnswers, setIncorrectAnswers] = useState<{ question: string; userAnswer: string; correctAnswer: string }[]>([]);
   const [quizFinished, setQuizFinished] = useState(false);
-
-  // State to manage ToDo items
-  const [todoItems, setTodoItems] = useState<string[]>(['Change question json to yml', 'Combine into 1 yml', 'Randomize questions', 'Weight topic button to quiz on', 'Randomize number of questions', 'Edit questions']);
-  const [newTodo, setNewTodo] = useState<string>(''); // New state for text input
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const shuffleArray = (array: Question[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -31,14 +31,15 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const combinedQuestions = [
-      ...githubQuestionsData.git_questions,
+      ...gitQuestionsData.git_questions,
       ...drupalQuestionsData.drupal_questions,
       ...composerQuestionsData.composer_quiz_questions,
-      ...developmentQuestionsData.development_questions,
+      ...phpQuestionsData.development_questions,
+      ...sqlQuestionsData.mysql_quiz_questions,
+      ...cisspd1QuestionsData.cissp_domain1_quiz_questions,
     ];
     shuffleArray(combinedQuestions);
-    const selectedQuestions = combinedQuestions.slice(0, 10);
-    setQuestions(selectedQuestions);
+    setQuestions(combinedQuestions);
   }, []);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -61,7 +62,21 @@ const App: React.FC = () => {
     setSelectedOption('');
   };
 
-  if (questions.length === 0) {
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category) ? prev.filter((cat) => cat !== category) : [...prev, category]
+    );
+  };
+
+  const filteredQuestions = selectedCategories.length > 0
+    ? questions.filter(q => selectedCategories.includes(q.type))
+    : questions;
+
+  if (filteredQuestions.length === 0 && selectedCategories.length > 0) {
+    return <div>No questions available for the selected categories.</div>;
+  }
+
+  if (filteredQuestions.length === 0) {
     return <div>Loading questions...</div>;
   }
 
@@ -89,38 +104,139 @@ const App: React.FC = () => {
     );
   }
 
-  const currentQuestion = questions[currentQuestionIndex];
-
-  // Function to handle adding a new ToDo item
-  const handleAddTodo = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (newTodo.trim() !== '') {
-      setTodoItems((prev) => [...prev, newTodo.trim()]);
-      setNewTodo(''); // Clear the input after adding
-    }
-  };
+  const currentQuestion = filteredQuestions[currentQuestionIndex];
 
   return (
     <div className="container">
-      <div className="todo-list">
-        <h2>To-Do List</h2>
-        <ul>
-          {todoItems.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-        <form onSubmit={handleAddTodo}>
-          {/* <input
-            type="text"
-            value={newTodo}
-            onChange={(e) => setNewTodo(e.target.value)}
-            placeholder="Add new item"
-          />
-          <button type="submit">Add</button> */}
-        </form>
-      </div>
-
       <h1>Quiz</h1>
+      <div style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '20px', display: 'flex', justifyContent: 'space-around' }}>
+        <label>
+          <input
+            type="checkbox"
+            value="Drupal"
+            checked={selectedCategories.includes("Drupal")}
+            onChange={() => handleCategoryChange("Drupal")}
+          />
+          Drupal
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="PHP"
+            checked={selectedCategories.includes("PHP")}
+            onChange={() => handleCategoryChange("PHP")}
+          />
+          PHP
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="SQL"
+            checked={selectedCategories.includes("SQL")}
+            onChange={() => handleCategoryChange("SQL")}
+          />
+          SQL
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="Git"
+            checked={selectedCategories.includes("Git")}
+            onChange={() => handleCategoryChange("Git")}
+          />
+          Git
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="Composer"
+            checked={selectedCategories.includes("Composer")}
+            onChange={() => handleCategoryChange("Composer")}
+          />
+          Composer
+        </label>
+      </div>
+      <div style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '20px', display: 'flex', justifyContent: 'space-around' }}>
+        <label>
+          <input
+            type="checkbox"
+            value="CISSPD1"
+            checked={selectedCategories.includes("CISSPD1")}
+            onChange={() => handleCategoryChange("CISSPD1")}
+          />
+          CISSP D1
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="CISSPD2"
+            checked={selectedCategories.includes("CISSPD2")}
+            onChange={() => handleCategoryChange("CISSPD2")}
+            disabled
+          />
+          CISSP D2
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="CISSPD3"
+            checked={selectedCategories.includes("CISSPD3")}
+            onChange={() => handleCategoryChange("CISSPD3")}
+            disabled
+          />
+          CISSP D3
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="CISSPD4"
+            checked={selectedCategories.includes("CISSPD4")}
+            onChange={() => handleCategoryChange("CISSPD4")}
+            disabled
+          />
+          CISSP D4
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="CISSPD5"
+            checked={selectedCategories.includes("CISSPD5")}
+            onChange={() => handleCategoryChange("CISSPD5")}
+            disabled
+          />
+          CISSP D5
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="CISSPD6"
+            checked={selectedCategories.includes("CISSPD6")}
+            onChange={() => handleCategoryChange("CISSPD6")}
+            disabled
+          />
+          CISSP D6
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="CISSPD7"
+            checked={selectedCategories.includes("CISSPD7")}
+            onChange={() => handleCategoryChange("CISSPD7")}
+            disabled
+          />
+          CISSP D7
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            value="CISSPD8"
+            checked={selectedCategories.includes("CISSPD8")}
+            onChange={() => handleCategoryChange("CISSPD8")}
+            disabled
+          />
+          CISSP D8
+        </label>
+      </div>
       <form onSubmit={handleSubmit}>
         <h2>{currentQuestion.question}</h2>
         {currentQuestion.options.map((option, index) => (
@@ -139,9 +255,7 @@ const App: React.FC = () => {
         <button type="submit">Submit</button>
       </form>
     </div>
-
-
-);
+  );
 };
 
 export default App;

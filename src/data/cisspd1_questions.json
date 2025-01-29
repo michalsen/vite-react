@@ -1,0 +1,114 @@
+{
+  "cissp_domain1_quiz_questions": [
+    {
+      "question": "What is the primary purpose of information security governance?",
+      "type": "CISSPD1",
+      "options": [
+        "To ensure compliance with laws and regulations",
+        "To protect and manage information assets",
+        "To manage organizational culture",
+        "To provide technical support for security measures"
+      ],
+      "correct_answer": "To protect and manage information assets"
+    },
+    {
+      "question": "Which of the following is an important first step in risk management?",
+      "type": "CISSPD1",
+      "options": [
+        "Identifying assets",
+        "Implementing controls",
+        "Performing a risk assessment",
+        "Establishing policies"
+      ],
+      "correct_answer": "Identifying assets"
+    },
+    {
+      "question": "What does CIA stand for in the context of information security?",
+      "type": "CISSPD1",
+      "options": [
+        "Confidentiality, Integrity, Availability",
+        "Control, Implement, Assess",
+        "Compliance, Inspection, Authentication",
+        "Confidentiality, Identification, Accountability"
+      ],
+      "correct_answer": "Confidentiality, Integrity, Availability"
+    },
+    {
+      "question": "Which of the following is a key principle of least privilege?",
+      "type": "CISSPD1",
+      "options": [
+        "Users should have maximum access to perform their jobs.",
+        "Access should be granted based on job necessity.",
+        "All users should have administrative privileges.",
+        "Access should be based on seniority."
+      ],
+      "correct_answer": "Access should be granted based on job necessity."
+    },
+    {
+      "question": "What is the purpose of conducting a Business Impact Analysis (BIA)?",
+      "type": "CISSPD1",
+      "options": [
+        "To estimate potential losses associated with risks",
+        "To develop security policies",
+        "To train staff on security awareness",
+        "To identify compliance requirements"
+      ],
+      "correct_answer": "To estimate potential losses associated with risks"
+    },
+    {
+      "question": "Which of the following is considered a correct definition of risk?",
+      "type": "CISSPD1",
+      "options": [
+        "The probability of an adverse event occurring",
+        "The net negative impact of an adverse event",
+        "The combination of threat and vulnerability",
+        "The likelihood of a threat exploiting a vulnerability"
+      ],
+      "correct_answer": "The combination of threat and vulnerability"
+    },
+    {
+      "question": "What is a security policy?",
+      "type": "CISSPD1",
+      "options": [
+        "A set of rules that govern how security controls are implemented",
+        "A technical guideline for system configurations",
+        "A document outlining day-to-day operational procedures",
+        "A list of authorized software applications"
+      ],
+      "correct_answer": "A set of rules that govern how security controls are implemented"
+    },
+    {
+      "question": "Which of the following frameworks is often used to guide information security governance?",
+      "type": "CISSPD1",
+      "options": [
+        "NIST Cybersecurity Framework",
+        "ITIL",
+        "Agile",
+        "Waterfall"
+      ],
+      "correct_answer": "NIST Cybersecurity Framework"
+    },
+    {
+      "question": "What is the key reason for conducting regular security training for employees?",
+      "type": "CISSPD1",
+      "options": [
+        "To ensure compliance with legal requirements",
+        "To create a security-aware culture",
+        "To minimize costs associated with breaches",
+        "To enable technical teams to focus on technical controls"
+      ],
+      "correct_answer": "To create a security-aware culture"
+    },
+    {
+      "question": "What legal concept refers to the obligation to protect information from unauthorized disclosure?",
+      "type": "CISSPD1",
+      "options": [
+        "Confidentiality",
+        "Integrity",
+        "Accountability",
+        "Availability"
+      ],
+      "correct_answer": "Confidentiality"
+    }
+  ]
+}
